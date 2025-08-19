@@ -27,11 +27,11 @@ struct ContentView: View {
 
 ^FO20,40
 ^A0N,80,80
-^FDZPL^FS
+^FDZPL Editor^FS
 
 ^FO20,120
 ^A0N,80,80
-^FDRules!^FS
+^FDTest!^FS
 
 ^XZ
 """
