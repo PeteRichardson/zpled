@@ -31,24 +31,32 @@ struct TemplateCommands: Commands {
     @ObservedObject private var templateStore = TemplateStore.shared
 
     var body: some Commands {
-            // This injects into the built-in File menu
-            CommandGroup(after: .newItem) {
-                Menu("New from Template") {
-                    if templateStore.templates.isEmpty {
-                        Text("No templates found").foregroundStyle(.secondary)
-                    } else {
-                        ForEach(templateStore.templates) { t in
-                            Button(t.displayName) {
-                                openWindow(value: t.contents)
-                            }
-                        }
-                    }
-                    Divider()
-                    Button("Reload Templates") {
-                        templateStore.reload()
-                    }
-                    .keyboardShortcut("R", modifiers: [.command, .shift])
+        CommandGroup(after: .newItem) {
+            Menu("New from Template") {
+                ForEach(Array(templateStore.templates.enumerated()), id: \.1.id) { idx, t in
+                    templateButton(idx: idx, t: t)
                 }
+
+                Divider()
+                Button("Reload Templates") { templateStore.reload() }
+                    .keyboardShortcut("R", modifiers: [.command, .shift])
             }
         }
+    }
+
+    // ⌘⇧1 … ⌘⇧9 for first 9 items; others get no shortcut
+    private func shortcutForIndex(_ index: Int) -> KeyEquivalent? {
+        guard (0..<9).contains(index) else { return nil }
+        return KeyEquivalent(Character(String(index + 1)))
+    }
+
+    @ViewBuilder
+    private func templateButton(idx: Int, t: ZPLTemplate) -> some View {
+        if let key = shortcutForIndex(idx) {
+            Button(t.displayName) { openWindow(value: t.contents) }
+                .keyboardShortcut(key, modifiers: [.command, .option])
+        } else {
+            Button(t.displayName) { openWindow(value: t.contents) }
+        }
+    }
 }
