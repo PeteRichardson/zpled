@@ -13,6 +13,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C16A84A22E54D54700DF7BDE /* zpled */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFolders = (
+				Templates,
+			);
 			path = zpled;
 			sourceTree = "<group>";
 		};

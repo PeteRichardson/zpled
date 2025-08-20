@@ -1,0 +1,7 @@
+^XA
+
+^FO20,70
+^A0N,80,80
+^FDZPL Editor^FS
+
+^XZ

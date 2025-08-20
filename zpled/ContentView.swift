@@ -22,7 +22,9 @@ private var editorFont: Font {
 
 
 struct ContentView: View {
-    @State private var text = """
+    @State private var text: String
+    
+    private let defaultZPL : String = """
 ^XA
 
 ^FO20,40
@@ -35,6 +37,11 @@ struct ContentView: View {
 
 ^XZ
 """
+    
+    // New initializer lets callers pass initial text
+    init(initialText: String? = nil) {
+        _text = State(initialValue: initialText ?? defaultZPL)
+    }
     
     private static let defaultDebounceDelay = Duration.milliseconds(800)
     

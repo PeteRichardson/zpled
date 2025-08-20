@@ -1,0 +1,12 @@
+^XA
+
+^FO20,40
+^A0N,80,80
+^FDZPL Editor^FS
+
+^FO20,120
+^A0N,80,80
+^FDTest!^FS
+
+^XZ
+

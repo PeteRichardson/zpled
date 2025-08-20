@@ -1,0 +1,15 @@
+^XA
+
+^FO20,8
+^A0N,80
+^FDZPL Editor^FS
+
+^FO20,73
+^A0N,80,80
+^FDTest!^FS
+
+^FO20,138
+^A0N,80,80
+^FDLine Three^FS
+
+^XZ
