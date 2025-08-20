@@ -39,7 +39,7 @@ struct TemplateCommands: Commands {
 
                 Divider()
                 Button("Reload Templates") { templateStore.reload() }
-                    .keyboardShortcut("R", modifiers: [.command, .shift])
+                    .keyboardShortcut("R", modifiers: [.command])
             }
         }
     }
@@ -54,7 +54,7 @@ struct TemplateCommands: Commands {
     private func templateButton(idx: Int, t: ZPLTemplate) -> some View {
         if let key = shortcutForIndex(idx) {
             Button(t.displayName) { openWindow(value: t.contents) }
-                .keyboardShortcut(key, modifiers: [.command, .option])
+                .keyboardShortcut(key, modifiers: [.command])
         } else {
             Button(t.displayName) { openWindow(value: t.contents) }
         }
