@@ -16,6 +16,21 @@ struct ZPLTemplate: Identifiable, Hashable {
 
 @MainActor
 final class TemplateStore: ObservableObject {
+    
+    public static let defaultZPL : String = """
+^XA
+
+^FO20,40
+^A0N,80,80
+^FDZPL Editor^FS
+
+^FO20,120
+^A0N,80,80
+^FDTest!^FS
+
+^XZ
+"""
+    
     static let shared = TemplateStore()
     @Published private(set) var templates: [ZPLTemplate] = []
 
